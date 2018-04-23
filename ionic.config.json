@@ -1,0 +1,8 @@
+{
+  "name": "appCompra",
+  "app_id": "app.appcompra.vinicius.in",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
