@@ -5,6 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { PerfilPage } from '../pages/perfil/perfil';
+import { EntrarPage } from '../pages/entrar/entrar';
+import { UsuariosProvider } from '../providers/usuarios/usuarios';
+
+import { MenuController } from 'ionic-angular';
 
 
 @Component({
@@ -15,15 +20,21 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages1: Array<{title: string, component: any}>;
+  pages2: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,  public usuariosProvider: UsuariosProvider, public menuCtrl: MenuController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
-    this.pages = [
+    this.pages1 = [
       { title: 'Home', component: HomePage },
+      { title: 'Entrar', component: EntrarPage },
       { title: 'Cadastro', component: CadastroPage }
+    ];
+    this.pages2 = [
+      { title: 'Home', component: HomePage },
+      { title: 'Perfil', component: PerfilPage },
     ];
 
   }
@@ -42,4 +53,11 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  sair(){
+    this.usuariosProvider.setStorage("usuario",null);
+    this.menuCtrl.enable(false, 'usuarioComLogin');
+    this.menuCtrl.enable(true, 'usuarioSemLogin');
+  }
+
 }
