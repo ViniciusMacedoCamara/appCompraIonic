@@ -18,18 +18,8 @@ export class UsuariosProvider {
   headers:any;
 
   constructor(public http: HttpClient, private storage: Storage) {
-    console.log('Hello UsuariosProvider Provider');
+    // console.log('Hello UsuariosProvider Provider');
     //this.headers = {"headers": {"authorization": "Bearer "+this.token}};
-
-    this.storage.set('nome', 'Vinicius');
-
-    this.storage.get('nome').then((val) => {
-      if (val) {
-          console.log('Nome', val);
-      } else {
-        console.log('Nao existe: ', val);
-      }
-    });
 
   }
 
